@@ -11,7 +11,7 @@ class DetailUserUseCase(
     suspend fun getUserDetail(userId : String) = userRepo.getUserDetail(userId)
     suspend fun getPost(userId : String, limit : Int, page : Int) = postRepo.getUserPost(userId, limit, page)
 
-    fun getLikePosts() = postRepo.getLikePosts()
-    fun addLike(postEntity: PostEntity) = postRepo.addLike(postEntity)
-    fun deleteLike(idPost: String) = postRepo.deleteLike(idPost)
+    suspend fun getLikePosts() = postRepo.getLikePosts()
+    suspend fun addLike(postEntity: PostEntity) = postRepo.addLike(postEntity)
+    suspend fun deleteLike(idPost: String) = postRepo.deleteLike(idPost)
 }

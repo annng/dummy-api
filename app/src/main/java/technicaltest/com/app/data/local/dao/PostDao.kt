@@ -7,13 +7,13 @@ import technicaltest.com.app.data.local.entity.PostEntity
 @Dao
 interface PostDao {
     @Query("SELECT * FROM post")
-    fun getPosts(): List<PostEntity>?
+    suspend fun getPosts(): List<PostEntity>?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg post: PostEntity)
+    suspend fun insert(vararg post: PostEntity)
 
     @Query("DELETE FROM post WHERE id IN (:id)")
-    fun deletePost(id : String?)
+    suspend fun deletePost(id : String?)
 
     @Query("SELECT EXISTS (SELECT * FROM post WHERE id IN (:id))")
     fun isExist(id : String?) : Boolean

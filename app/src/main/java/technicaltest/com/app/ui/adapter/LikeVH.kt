@@ -18,10 +18,9 @@ import technicaltest.com.app.databinding.ItemPostBinding
 class LikeVH(private val viewBinding: ItemPostBinding) :
     RecyclerView.ViewHolder(viewBinding.root) {
 
-    fun bind(item: PostEntity, dao: PostDao, onLike: (PostEntity, Boolean) -> Unit) {
+    fun bind(item: PostEntity, isExist: Boolean, onLike: (PostEntity, Boolean) -> Unit) {
         item.image?.let { viewBinding.ivPhoto.loadImageRounded(it) }
         item.owner?.picture?.let { viewBinding.ivProfile.loadImageCircle(it) }
-        val isExist = dao.isExist(item.id)
 
         viewBinding.llTag.removeAllViews()
         viewBinding.tvName.text = "${item.owner?.firstName} ${item.owner?.lastName}"

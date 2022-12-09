@@ -69,8 +69,24 @@ class DetailUserViewModel(
 
 
     fun getPostDao() = postDao
-    fun getLikePosts() = useCase.getLikePosts()
-    fun addLike(postEntity: PostEntity) = useCase.addLike(postEntity)
-    fun deleteLike(idPost: String) = useCase.deleteLike(idPost)
+    fun addLike(postEntity: PostEntity){
+        viewModelScope.launch {
+            try {
+                useCase.addLike(postEntity)
+            }catch (e : Exception){
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun deleteLike(idPost : String){
+        viewModelScope.launch {
+            try {
+                useCase.deleteLike(idPost)
+            }catch (e : Exception){
+                e.printStackTrace()
+            }
+        }
+    }
 
 }

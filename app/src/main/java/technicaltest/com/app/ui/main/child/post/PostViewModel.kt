@@ -15,6 +15,9 @@ class PostViewModel(
     private val _post = MutableLiveData<ResultState<BaseResponseData<Post>>>()
     val post: LiveData<ResultState<BaseResponseData<Post>>> = _post
 
+    private val _postDB = MutableLiveData<List<PostEntity>>()
+    val postDB: LiveData<List<PostEntity>> = _postDB
+
     fun getPost(limit: Int = RequestCons.QUERY.LIMIT, page: Int, tag : String?) {
         loaderState.value = LoaderState.OnLoading(true)
         viewModelScope.launch {
@@ -39,7 +42,34 @@ class PostViewModel(
         }
     }
 
-    fun getLikePosts() = useCase.getLikePosts()
-    fun addLike(postEntity: PostEntity) = useCase.addLike(postEntity)
-    fun deleteLike(idPost: String) = useCase.deleteLike(idPost)
+
+    fun getLikePosts(){
+        viewModelScope.launch {
+            try {
+                _postDB.postValue(useCase.getLikePosts())
+            }catch (e : Exception){
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun addLike(postEntity: PostEntity){
+        viewModelScope.launch {
+            try {
+                useCase.addLike(postEntity)
+            }catch (e : Exception){
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun deleteLike(idPost : String){
+        viewModelScope.launch {
+            try {
+                useCase.deleteLike(idPost)
+            }catch (e : Exception){
+                e.printStackTrace()
+            }
+        }
+    }
 }

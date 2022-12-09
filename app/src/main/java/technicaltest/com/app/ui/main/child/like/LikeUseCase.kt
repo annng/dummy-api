@@ -6,7 +6,8 @@ import technicaltest.com.app.data.repository.PostRepository
 class LikeUseCase(
     private val postRepository: PostRepository
 ) {
-    fun getLikePosts() = postRepository.getLikePosts()
-    fun addLike(postEntity: PostEntity) = postRepository.addLike(postEntity)
-    fun deleteLike(idPost: String) = postRepository.deleteLike(idPost)
+    suspend fun getLikePosts() = postRepository.getLikePosts()
+    suspend fun addLike(postEntity: PostEntity) = postRepository.addLike(postEntity)
+    suspend fun deleteLike(idPost: String) = postRepository.deleteLike(idPost)
+    fun isLikeExist(idPost: String) = postRepository.isLikeExist(idPost)
 }
