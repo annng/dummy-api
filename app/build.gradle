@@ -48,7 +48,7 @@ def retrofitVer = '2.9.0'
 def navAndroidXVer = '2.5.3'
 def moshiKotlinVersion = '1.12.0'
 def okhttp3Version = '4.9.3'
-def koinVersion = '3.1.5'
+def koinVersion = '3.2.2'
 def viewBindingDelegate = '1.5.3'
 def room_version = "2.4.3"
 dependencies {
@@ -87,13 +87,21 @@ dependencies {
 
     //di
     implementation "io.insert-koin:koin-android:${koinVersion}"
-
+    implementation "io.insert-koin:koin-core:$koinVersion"
     implementation "com.github.kirich1409:viewbindingpropertydelegate-noreflection:${viewBindingDelegate}"
 
 
     testImplementation 'junit:junit:4.13.2'
+    testImplementation "io.insert-koin:koin-test-junit4:${koinVersion}"
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    androidTestImplementation "io.insert-koin:koin-test:${koinVersion}"
+    androidTestImplementation "org.mockito:mockito-android:2.22.0"
+    testImplementation "io.insert-koin:koin-test:${koinVersion}"
+    testImplementation "org.mockito:mockito-inline:4.2.0"
+    testImplementation "androidx.test:core:1.5.0"
+    androidTestImplementation "androidx.arch.core:core-testing:2.0.0"
+
 
     // additional for async testing
     testImplementation 'com.google.truth:truth:1.1.3'
