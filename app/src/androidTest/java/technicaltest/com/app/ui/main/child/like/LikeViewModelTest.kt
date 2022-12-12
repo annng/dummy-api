@@ -54,7 +54,7 @@ class LikeViewModelTest : KoinTest {
         likeViewModel.deleteLike(SamplePost.post.id)
         likeViewModel.getLikePosts()
         val result = likeViewModel.post.getOrAwaitValue().find {
-            it.id == "1"
+            it.id == SamplePost.post.id
         }
 
         assertThat(result != null).isEqualTo(false)
