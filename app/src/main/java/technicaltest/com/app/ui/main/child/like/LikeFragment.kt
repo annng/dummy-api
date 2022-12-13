@@ -16,7 +16,7 @@ import technicaltest.com.app.databinding.FragmentLikeBinding
 import technicaltest.com.app.ui.adapter.LikeVH
 import technicaltest.com.app.ui.base.BaseFragment
 import technicaltest.com.app.ui.base.GenericAdapter
-
+import android.widget.Toast
 
 class LikeFragment : BaseFragment(R.layout.fragment_like), KoinComponent {
 
@@ -28,7 +28,7 @@ class LikeFragment : BaseFragment(R.layout.fragment_like), KoinComponent {
 
     private val postAdapter = object : GenericAdapter<PostEntity>(
         itemClickListener = {
-            //todo onClick
+            Toast.makeText(requireContext(), it.text, Toast.LENGTH_SHORT).show()
         }
     ) {
         override fun getViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
