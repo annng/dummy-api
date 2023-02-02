@@ -5,6 +5,7 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 import technicaltest.com.app.core.shared.api.RetrofitServices
 import technicaltest.com.app.data.local.CustomRoomDatabase
+import technicaltest.com.app.data.local.SharedPreference
 import technicaltest.com.app.data.remote.domain.PostServices
 import technicaltest.com.app.data.remote.domain.UserServices
 import technicaltest.com.app.data.repository.PostRepository
@@ -13,12 +14,6 @@ import technicaltest.com.app.ui.base.BaseUseCase
 import technicaltest.com.app.ui.base.BaseViewModel
 import technicaltest.com.app.ui.main.child.like.LikeUseCase
 import technicaltest.com.app.ui.main.child.like.LikeViewModel
-import technicaltest.com.app.ui.main.child.post.PostUseCase
-import technicaltest.com.app.ui.main.child.post.PostViewModel
-import technicaltest.com.app.ui.main.child.user.UserUseCase
-import technicaltest.com.app.ui.main.child.user.UserViewModel
-import technicaltest.com.app.ui.user.DetailUserUseCase
-import technicaltest.com.app.ui.user.DetailUserViewModel
 
 
 val localModule = module {
@@ -32,27 +27,25 @@ val networkModule = module {
 
 val dataSourceModule = module {
     single { UserRepository(get()) }
-    single { PostRepository(get(), get()) }
+    single { PostRepository(get(), get(), get()) }
 }
 
 val useCaseModule = module {
     single { BaseUseCase() }
-    single { UserUseCase(get()) }
-    single { PostUseCase(get()) }
-    single { DetailUserUseCase(get(), get()) }
     single { LikeUseCase(get()) }
 }
 
 val viewModelModule = module {
     viewModel { BaseViewModel() }
-    viewModel { UserViewModel(get()) }
-    viewModel { PostViewModel(get()) }
-    viewModel { DetailUserViewModel(get(), get()) }
     viewModel { LikeViewModel(get()) }
 }
 
+val appModule = module {
+    single { SharedPreference(get()) }
+}
 
 val appComponent: List<Module> = listOf(
+    appModule,
     dataSourceModule,
     networkModule,
     viewModelModule,

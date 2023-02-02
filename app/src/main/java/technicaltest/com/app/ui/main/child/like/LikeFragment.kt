@@ -23,9 +23,6 @@ class LikeFragment : BaseFragment(R.layout.fragment_like), KoinComponent {
     private val viewBinding: FragmentLikeBinding by viewBinding(FragmentLikeBinding::bind)
     private val viewModel: LikeViewModel by viewModel()
 
-    private val postDao : PostDao by inject()
-
-
     private val postAdapter = object : GenericAdapter<PostEntity>(
         itemClickListener = {
             Toast.makeText(requireContext(), it.text, Toast.LENGTH_SHORT).show()

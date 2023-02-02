@@ -8,8 +8,6 @@ import technicaltest.com.app.R
 import technicaltest.com.app.databinding.ActivityMainBinding
 import technicaltest.com.app.ui.base.BaseActivity
 import technicaltest.com.app.ui.main.child.like.LikeFragment
-import technicaltest.com.app.ui.main.child.post.PostFragment
-import technicaltest.com.app.ui.main.child.user.UserFragment
 
 class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -44,16 +42,6 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             menuSelected -> return false
             R.id.menu_user -> {
                 setIconNavigation(item, R.drawable.ic_user_fill)
-                replaceFragment(UserFragment(), item)
-                return true
-            }
-            R.id.menu_post -> {
-                setIconNavigation(item, R.drawable.ic_post_fill)
-                replaceFragment(PostFragment(), item)
-                return true
-            }
-            R.id.menu_like -> {
-                setIconNavigation(item, R.drawable.ic_like_fill)
                 replaceFragment(LikeFragment(), item)
                 return true
             }

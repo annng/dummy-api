@@ -71,6 +71,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:${retrofitVer}"
     implementation "com.squareup.retrofit2:converter-moshi:${retrofitVer}"
     implementation "com.squareup.moshi:moshi-kotlin:${moshiKotlinVersion}"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.7.10"
     implementation "com.squareup.okhttp3:okhttp:${okhttp3Version}"
     implementation "com.squareup.okhttp3:logging-interceptor:${okhttp3Version}"
 

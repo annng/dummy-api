@@ -28,7 +28,7 @@ class User (
     val phone: String?,
     @SerializedName("location")
     val location: Location?
-)
+) : java.io.Serializable
 
 data class Location(
     @SerializedName("street")
@@ -41,7 +41,7 @@ data class Location(
     val country: String?,
     @SerializedName("timezone")
     val timezone: String?
-){
+) : java.io.Serializable {
     override fun toString(): String {
         return "$street, $city, $state"
     }

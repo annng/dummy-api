@@ -1,6 +1,5 @@
 package technicaltest.com.app.data.local.entity
 
-import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
@@ -13,20 +12,21 @@ import technicaltest.com.app.data.model.User
 data class PostEntity(
     @PrimaryKey
     @SerializedName("id")
-    @NonNull
-    val id: String,
+    var id: String,
     @SerializedName("text")
-    val text: String?,
+    var text: String?,
     @SerializedName("image")
-    val image: String?,
+    var image: String?,
     @SerializedName("likes")
-    val likes: Int = 0,
+    var likes: Int = 0,
     @SerializedName("tags")
-    val tags: List<String>?,
+    var tags: List<String>?,
     @SerializedName("link")
-    val link: String?,
+    var link: String?,
     @SerializedName("publishDate")
-    val publishDate: String?,
+    var publishDate: String?,
     @SerializedName("owner")
-    val owner: User?,
-)
+    var owner: User?,
+) : java.io.Serializable {
+
+}
